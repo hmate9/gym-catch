@@ -33,12 +33,6 @@ class CatchEnv(gym.Env):
     reward, done = self.reward()
     return self.board, reward, done, {}
 
-  def step(self, action):
-    return self._step(action)
-
-  def reset(self):
-    return self._reset()
-
   def reward(self):
     x = self.ball[0]
     y = self.ball[1]
