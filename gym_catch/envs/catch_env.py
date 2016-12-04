@@ -31,7 +31,7 @@ class CatchEnv(gym.Env):
     self.move_pad(action)
     self.move_ball()
     reward, done = self.reward()
-    return self.board, reward, done, {}
+    return np.copy(self.board), reward, done, {}
 
   def reward(self):
     x = self.ball[0]
