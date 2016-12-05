@@ -43,10 +43,7 @@ class CatchEnv(gym.Env):
       else:
         return -1, True
     else:
-        if self.pad_loc <= x < self.pad_loc + self.pad_width:
-          return 0, False # Caught
-        else:
-          return 0, False # Missed
+        return 0, False # The ball is still in the air
 
   # Moves the pad in the direction
   def move_pad(self, action):
@@ -72,7 +69,7 @@ class CatchEnv(gym.Env):
     self.board[self.height-1][:self.pad_width] = 1 # The pad
     self.pad_loc = 0
     self.place_ball()
-    return self.board
+    return np.copy(self.board)
 
   def place_ball(self):
     x = random.randint(0, self.width-1)
